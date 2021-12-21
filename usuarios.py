@@ -41,7 +41,7 @@ class Usuario:
         banco = Banco()
 
         c = banco.conexao.cursor()
-        comando = "select * from usuarios where idusuario = " + id + " "
+        comando = "select * from usuarios where idusuario = " + str(id) + " "
         c.execute(comando)
 
         # c recebe uma lista com os atributos
@@ -51,11 +51,18 @@ class Usuario:
 
         for elemento in c:
             self.idusuario = elemento[0]
+            print(elemento[0])
             self.nome = elemento[1]
+            print(elemento[1])
             self.telefone = elemento[2]
+            print(elemento[2])
             self.email = elemento[3]
+            print(elemento[3])
             self.usuario = elemento[4]
+            print(elemento[4])
             self.senha = elemento[5]
+            print(elemento[5])
+
 
         c.close()
 

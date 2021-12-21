@@ -156,6 +156,7 @@ class Aplicacao:
     def alterarUsuario(self):
         
         user = Usuario()
+        #id está vazio
         user.idusuario = self.txtidusuario.get()
         user.nome = self.txtnome.get()
         user.telefone = self.txttelefone.get()
@@ -180,7 +181,25 @@ class Aplicacao:
         
         # aqui eu chamo a classe usuario para poder modificar coisas no banco de dados
         self.lblmsg["text"] = user.selectUser(id)
-    
+
+        self.txtidusuario.delete(0, END)
+        self.txtidusuario.insert(INSERT, user.idusuario)
+
+        self.txtnome.delete(0, END)
+        self.txtnome.insert(INSERT, user.nome)
+
+        self.txttelefone.delete(0, END)
+        self.txttelefone.insert(INSERT,user.telefone)
+
+        self.txtemail.delete(0, END)
+        self.txtemail.insert(INSERT, user.email)
+
+        self.txtusuario.delete(0, END)
+        self.txtusuario.insert(INSERT, user.usuario)
+
+        self.txtsenha.delete(0, END)
+        self.txtsenha.insert(INSERT,user.senha)
+
     def criaTela(self):
         root2 = Tk()
         root2.title("Nova Janela")
